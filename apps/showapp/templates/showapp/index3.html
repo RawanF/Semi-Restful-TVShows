@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'books_authors_app/css/style.css' %}">    
+    <title>Edit Show</title>
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Assignment: Semi-Restful TV Shows</h1>
+        <a style="margin-left: 750px;" href="/shows">Go Back</a>
+        <h5> Edit Show {{show.id}}  {{show.RDate|date:"d-m-Y"}}</h5>
+        <form action="/shows/{{show.id}}/edit" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col">
+                    <label>Title:</label>
+                    <input type="text" class="form-control" name="title" placeholder="Title" value="{{show.title}}">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label>Network:</label>
+                    <input type="text" class="form-control" name="network" placeholder="Network"
+                        value="{{show.network}}">
+                </div>
+                <div class="col">
+                    <label>Relase date:</label>
+
+                    <input type="date" class="form-control" name="RDate" 
+                    value="{{show.RDate|date:"Y-m-d" }}">
+                </div>
+            </div>
+            <div class="row">
+                <label>Description:</label>
+                <textarea class="form-control" name="description" placeholder="Show Description">{{show.desc}}</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+        <a href="/shows/{{show.id}}">Go To Show</a>
+
+    </div>
+</body>
+
+</html>

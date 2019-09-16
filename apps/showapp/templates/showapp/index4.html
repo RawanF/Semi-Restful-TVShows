@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'books_authors_app/css/style.css' %}">    
+    <title> {{show.title}} Show</title>
+</head>
+<body>
+    <div id="wrapper">
+            <a style="margin-left: 750px;" href="/shows">Go Back</a>
+
+        <h1>Assignment: Semi-Restful TV Shows</h1>
+        <h2> TV Show {{show.id}}</h2>
+            <h4>Title: {{show.title}} </h4><br>
+            <h4>Network: {{show.network}}</h4> 
+            <h4>Relase Date: {{show.RDate}}</h4> 
+            <h4>Description: {{show.desc}}</h4><br><br>
+            <h4>Last Updated: {{show.updated_at}}</h4>
+            <a href="/shows/{{show.id}}/edit">Edit</a> | <a
+            href="/shows/{{show.id}}/destroy">Delete</a>
+    </div>
+</body>
+
+</html>
