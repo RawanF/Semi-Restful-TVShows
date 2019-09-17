@@ -11,35 +11,44 @@
     <link rel="stylesheet" href="{% static 'showapp/css/style.css' %}">    
     <title>Edit Show</title>
 </head>
+
 <body>
     <div id="wrapper">
         <h1>Assignment: Semi-Restful TV Shows</h1>
         <a style="margin-left: 750px;" href="/shows">Go Back</a>
-        <h5> Edit Show {{show.id}}  {{show.RDate|date:"d-m-Y"}}</h5>
+        <h5> Edit Show {{show.id}} </h5>
+        {% if messages %}
+
+        {% for message in messages %}
+        {{ message }}<br>
+        {% endfor %}
+
+        {% endif %}
         <form action="/shows/{{show.id}}/edit" method="POST">
             {% csrf_token %}
             <div class="row">
                 <div class="col">
                     <label>Title:</label>
-                    <input type="text" class="form-control" name="title" placeholder="Title" value="{{show.title}}">
+                    <input type="text" class="form-control" name="title" placeholder="Title" value="{{show.title}}"
+                        required>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <label>Network:</label>
                     <input type="text" class="form-control" name="network" placeholder="Network"
-                        value="{{show.network}}">
+                        value="{{show.network}}" required>
                 </div>
                 <div class="col">
                     <label>Relase date:</label>
 
-                    <input type="date" class="form-control" name="RDate" 
-                    value="{{show.RDate|date:"Y-m-d" }}">
+                    <input type="date" class="form-control" name="RDate" value="{{show.RDate|date:"Y-m-d" }}" required>
                 </div>
             </div>
             <div class="row">
                 <label>Description:</label>
-                <textarea  class="form-control" name="description" placeholder="Show Description">{{show.desc}}</textarea>
+                <textarea class="form-control" name="desc" placeholder="Show Description"
+                    required>{{show.desc}}</textarea>
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
