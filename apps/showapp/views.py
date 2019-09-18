@@ -26,7 +26,7 @@ def newShow(request):
             for key, value in errors.items():
                 messages.error(request, value)
             # redirect the user back to the form to fix the errors
-            return render(request, "showapp/index2.html")
+            return redirect(f'/shows/new' , messages)
         else:
             t=request.POST["title"]
             nw=request.POST["network"]

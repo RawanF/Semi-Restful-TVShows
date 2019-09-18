@@ -17,6 +17,11 @@
         <h1>Assignment: Semi-Restful TV Shows</h1>
         <a style="margin-left: 750px;" href="/shows">Go Back</a>
         <h5> Add a New Show</h5>
+        {% if messages %}
+        {% for message in messages %}
+        {{ message }}<br>
+        {% endfor %}
+        {% endif %}
         <form action="/shows/new" method="POST">
             {% csrf_token %}
             <div class="row">

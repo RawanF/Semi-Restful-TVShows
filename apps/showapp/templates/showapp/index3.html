@@ -18,11 +18,9 @@
         <a style="margin-left: 750px;" href="/shows">Go Back</a>
         <h5> Edit Show {{show.id}} </h5>
         {% if messages %}
-
         {% for message in messages %}
         {{ message }}<br>
         {% endfor %}
-
         {% endif %}
         <form action="/shows/{{show.id}}/edit" method="POST">
             {% csrf_token %}
